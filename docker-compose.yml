@@ -1,12 +1,9 @@
-version: '3.8'
-
 services:
   db:
     image: mysql:8
     restart: always
     environment:
       MYSQL_DATABASE: attendance_checker
-      # MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
     ports:
@@ -43,7 +40,7 @@ services:
       - /app/node_modules
     ports:
       - "4200:4200"
-    command: ng serve --host 0.0.0.0 --port 4200 --disable-host-check
+    command: ng serve --host 0.0.0.0 --port 4200 --disable-host-check --poll=2000
 
 volumes:
   mysql_data:
