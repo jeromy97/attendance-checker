@@ -14,7 +14,7 @@ class CreateUser extends Command
      *
      * @var string
      */
-    protected $signature = 'user:create {email} {--password=} {--name=}';
+    protected $signature = 'user:create {email} {--password=} {--name=} {--is_admin=}';
 
     /**
      * The console command description.
@@ -31,6 +31,7 @@ class CreateUser extends Command
         $email = $this->argument('email');
         $name = $this->option('name') ?? 'New user';
         $password = $this->option('password') ?? Str::random(12);
+        $isAdmin = $this->option('is_admin') ?? false;
 
         if (User::where('email', $email)->exists()) {
             $this->error('A user with this email already exists.');
@@ -40,7 +41,8 @@ class CreateUser extends Command
         User::create([
             'name' => $name,
             'email' => $email,
-            'password' => Hash::make($password)
+            'password' => Hash::make($password),
+            'is_admin' => $isAdmin
         ]);
 
         $this->info('User created successfully!');
