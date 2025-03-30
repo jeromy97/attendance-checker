@@ -1,10 +1,20 @@
-<h2>Login</h2>
-<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-  <label for="email">E-mail:</label>
-  <input id="email" type="email" formControlName="email" required />
+<div class="row justify-content-center">
+  <div class="col-md-4">
 
-  <label for="password">Wachtwoord:</label>
-  <input id="password" type="password" formControlName="password" required />
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail:</label>
+        <input id="email" type="email" class="form-control" formControlName="email" required />
+      </div>
+    
+      <div class="mb-3">
+        <label for="password" class="form-label">Wachtwoord:</label>
+        <input id="password" class="form-control" type="password" formControlName="password" required />
+      </div>
+    
+      <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
+    </form>
 
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
-</form>
+  </div>
+</div>

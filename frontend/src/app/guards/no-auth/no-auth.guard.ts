@@ -15,7 +15,6 @@ export class NoAuthGuard implements CanActivate {
       return false;
     }
     // otherwise show the login page
-    console.log('halo');
     return true;
   }
 }
